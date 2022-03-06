@@ -8,6 +8,8 @@ import multerMulti from '../middlewares/multer';
 
 const router = express.Router();
 
+router.use(express.json());
+
 router.post('/files', multerMulti.array('randomFiles'), uploadFiles);
 
 router.get('/files', getFilesMetadata);
