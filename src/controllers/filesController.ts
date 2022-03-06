@@ -38,6 +38,22 @@ export const getFilesMetadata = async (req: Request, res: Response) => {
   return res.json(metadata);
 };
 
-export const downloadFiles = (req: Request, res: Response) => {
-  res.end();
+export const downloadFiles = async (req: Request, res: Response) => {
+  const userName = req?.body?.userName;
+  const fileNameReq = req?.body?.fileName;
+  if (!userName || !fileNameReq) {
+    res.status(404).end('Bad request. Must have userId and fileName fields');
+    return;
+  }
+
+  const user = await findUserByName(userName);
+  if (!user) return res.status(404).end(`User doesn't exist`);
+  if (!user.files) return res.status(404).end(`User doesn't have files`);
+
+  const file = user.files.find(({ fileName, originalName }) => {
+    return fileNameReq === fileName || fileNameReq === originalName;
+  });
+  if (!file) return res.status(404).end(`File doesn't exist`);
+
+  res.download(`uploads/${userName}/${file.fileName}`, file.originalName);
 };

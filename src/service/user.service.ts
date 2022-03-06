@@ -1,9 +1,8 @@
 import User from '../models/User';
 
 export const createUser = async (userName: string) => {
-  let user = await User.find({ name: userName });
-  if (!user || user.length === 0)
-    await User.create({ name: userName, files: [] });
+  let user = await findUserByName(userName);
+  if (!user) await User.create({ name: userName, files: [] });
 };
 
 export const registerFilesToUser = async (userName: string, files: []) => {
