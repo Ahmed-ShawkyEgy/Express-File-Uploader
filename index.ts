@@ -4,7 +4,7 @@ import filesRouter from './src/routes/fileRoutes';
 import fs from 'fs';
 import path from 'path';
 
-const PORT_NUMBER = process.env.PORT || 500;
+const PORT_NUMBER = process.env.PORT || 5000;
 
 const app = express();
 
