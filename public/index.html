@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload File</title>
+  </head>
+  <body>
+    <h1>File Upload Test</h1>
+
+    <form
+      id="form"
+      action="/api/files"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <label for="userName">User Name:</label>
+      <input type="text" name="userName" />
+      <input type="file" name="randomFiles" multiple />
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
