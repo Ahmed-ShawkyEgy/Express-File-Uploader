@@ -20,17 +20,17 @@ export const uploadFiles = async (req: Request, res: Response) => {
       uploadTimestamp: +new Date(),
     })
   );
-
   registerFilesToUser(userId, files);
   console.log('File(s) uploaded successfully');
-  return res.end('File Uploaded Successfully');
+  return res.send('File Uploaded Successfully');
 };
 
 export const getFilesMetadata = async (req: Request, res: Response) => {
-  const userName = req?.body?.userName;
+  // const userName = req?.body?.userName;
+  const userName = req?.params.userId;
   console.log(userName, req.body);
 
-  if (!userName)
+  if (!userName || typeof userName !== 'string')
     return res.status(400).end('Queries must contain a userName parameter');
   const user = await findUserByName(userName);
   const metadata = user?.files ?? [];
@@ -39,16 +39,16 @@ export const getFilesMetadata = async (req: Request, res: Response) => {
 };
 
 export const downloadFiles = async (req: Request, res: Response) => {
-  const userName = req?.body?.userName;
-  const fileNameReq = req?.body?.fileName;
-  if (!userName || !fileNameReq) {
-    res.status(404).end('Bad request. Must have userId and fileName fields');
+  const userName = req?.query?.userName;
+  const fileNameReq = req?.query?.fileName;
+  if (!userName || !fileNameReq || typeof userName !== 'string' ) {
+    res.status(400).end('Bad request. Must have userId and fileName fields');
     return;
   }
 
   const user = await findUserByName(userName);
-  if (!user) return res.status(404).end(`User doesn't exist`);
-  if (!user.files) return res.status(404).end(`User doesn't have files`);
+  if (!user) return res.status(404).send(`User doesn't exist`);
+  if (!user.files) return res.status(404).send(`User doesn't have files`);
 
   const file = user.files.find(({ fileName, originalName }) => {
     return fileNameReq === fileName || fileNameReq === originalName;
