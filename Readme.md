@@ -40,6 +40,8 @@ This project contains APIs for uploading files associated with userIds, storing 
 
 We use mongoDB for storing the files for each user, as well as for storing the metadata for each file (like file's size, upload time, and a reference for the file in the local storage).
 
+You can test the api's endpoints using this [link](https://arcane-river-51599.herokuapp.com/).
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
@@ -84,7 +86,7 @@ Please make sure that you have the following installed on your machine first.
 4. Run the server with the following command
 
    ```sh
-   npm start
+   npm run serve
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
