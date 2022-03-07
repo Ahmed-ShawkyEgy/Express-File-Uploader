@@ -8,6 +8,8 @@
 
   <p align="center">
     Api for uploading & downloading files
+    <br/>
+    <a href="https://arcane-river-51599.herokuapp.com/">Demo</a>
   </p>
 </div>
 
@@ -117,12 +119,12 @@ POST /api/files
 Given a user's name/id, this endpoint returns all of the metadata of the files belonging to him.
 
 ```sh
-GET /api/files
+GET /api/files/:userId
 ```
 
-| Parameter |       Description       |
-| --------- | :---------------------: |
-| userName  | The user's name (or id) |
+| Path Parameter |       Description       |
+| -------------- | :---------------------: |
+| userId         | The user's name (or id) |
 
 _Response Sample_
 
@@ -143,12 +145,12 @@ _Response Sample_
 Given a user's name and a file's name, this endpoint downloads the file if it exists.
 
 ```sh
-GET /api/download
+GET /api/download?
 ```
 
-| Parameter |                                Description                                |
-| --------- | :-----------------------------------------------------------------------: |
-| userName  |                          The user's name (or id)                          |
-| fileName  | Either the file's original name, or it's unique name in the local storage |
+| Query Parameter |                                Description                                |
+| --------------- | :-----------------------------------------------------------------------: |
+| userName        |                          The user's name (or id)                          |
+| fileName        | Either the file's original name, or it's unique name in the local storage |
 
 <p align="right">(<a href="#top">back to top</a>)</p>

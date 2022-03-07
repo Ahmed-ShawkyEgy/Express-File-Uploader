@@ -18,10 +18,10 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:5000/',
+        url: 'https://arcane-river-51599.herokuapp.com/',
       },
       {
-        url: 'https://arcane-river-51599.herokuapp.com/',
+        url: 'http://localhost:5000/',
       },
     ],
   },
