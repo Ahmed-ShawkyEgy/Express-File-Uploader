@@ -9,7 +9,7 @@
   <p align="center">
     Api for uploading & downloading files
     <br/>
-    <a href="https://arcane-river-51599.herokuapp.com/">Demo</a>
+    <a href="https://arcane-river-51599.herokuapp.com/" target="_blank">Demo</a>
   </p>
 </div>
 

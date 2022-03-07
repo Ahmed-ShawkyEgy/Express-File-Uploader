@@ -90,7 +90,7 @@ router.get('/files/:userId', getFilesMetadata);
  *       required: true
  *   responses:
  *    '200':
- *      description: Metadata fetched
+ *      description: File is ready to download
  *    '400':
  *      description: Bad request. Must have userId and fileName fields
  *    '404':
